@@ -308,6 +308,13 @@
             font-size: 0.95rem;
         }
 
+        .cert-date {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
         /* Education Section */
         .education {
             padding: 5rem 2rem;
@@ -349,6 +356,138 @@
         .education-details {
             color: var(--text-muted);
             font-size: 0.95rem;
+        }
+
+        /* Open Source Section */
+        .opensource {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
+        }
+
+        .opensource-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .opensource-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+
+        .contrib-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .contrib-stat {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .contrib-stat:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .contrib-description {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .contrib-description h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            margin-top: 0;
+        }
+
+        .contrib-description p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .contrib-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contrib-list li {
+            color: var(--text-muted);
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .contrib-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .contrib-list strong {
+            color: var(--accent-light);
+        }
+
+        .github-link-box {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 1rem;
+            transition: all 0.3s;
+        }
+
+        .github-link-box:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .github-link-box p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .opensource-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contrib-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         .section-title {
@@ -494,6 +633,56 @@
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        /* Enterprise Experience Section */
+        .enterprise {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+        }
+
+        .enterprise-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .enterprise-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .enterprise-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 2rem;
+            border-radius: 1rem;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .enterprise-card:hover {
+            border-color: var(--success);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.2);
+        }
+
+        .enterprise-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .enterprise-card h3 {
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .enterprise-card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 0.95rem;
         }
 
         .stats-grid {
@@ -643,6 +832,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#opensource">Open Source</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -670,31 +860,32 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Professional Profile</h3>
-                    <p><strong>Full Name:</strong> Alok Raja</p>
-                    <p><strong>Current Position:</strong> DevOps Engineer & Cloud Architect</p>
-                    <p><strong>Company:</strong> Wipro</p>
-                    <p><strong>Location:</strong> Pune, India</p>
+                    <p><strong>Full Name:</strong> Alok R (He/Him)</p>
+                    <p><strong>Current Position:</strong> DevOps Engineer</p>
+                    <p><strong>Company:</strong> Wipro (Full-time)</p>
+                    <p><strong>Experience:</strong> Jul 2022 - Present (3+ years)</p>
+                    <p><strong>Location:</strong> Gurugram, Haryana, India</p>
                     <p><strong>Professional Summary:</strong></p>
-                    <p>Passionate and results-driven DevOps and Cloud professional with 4+ years of proven expertise in designing, deploying, and managing scalable cloud infrastructure. Specialized in Infrastructure as Code (IaC), CI/CD automation, and Kubernetes orchestration. Emerging Gen AI and intelligent coding expert leveraging AI tools for accelerated development. Proven track record of improving deployment efficiency, reducing infrastructure costs, and implementing best practices in automated infrastructure management.</p>
+                    <p>I am a skilled DevOps engineer and developer with a passion for streamlining processes and optimizing workflows. I leverage my expertise to build efficient and scalable solutions. Dedicated to continuous improvement, I embrace cutting-edge technologies and collaborate seamlessly across teams to drive innovation in the ever-evolving tech landscape.</p>
                 </div>
                 <div class="about-highlights">
                     <h3>Key Highlights</h3>
                     <div class="highlights-grid">
                         <div class="highlight-item">
-                            <div class="highlight-title">37</div>
-                            <div class="highlight-label">Open Source Projects</div>
+                            <div class="highlight-title">3,603</div>
+                            <div class="highlight-label">LinkedIn Followers</div>
                         </div>
                         <div class="highlight-item">
-                            <div class="highlight-title">AWS, Azure, GCP</div>
-                            <div class="highlight-label">Multi-Cloud Expert</div>
+                            <div class="highlight-title">500+</div>
+                            <div class="highlight-label">Connections</div>
                         </div>
                         <div class="highlight-item">
-                            <div class="highlight-title">Kubernetes</div>
-                            <div class="highlight-label">EKS Production Ready</div>
+                            <div class="highlight-title">83</div>
+                            <div class="highlight-label">Endorsed Skills</div>
                         </div>
                         <div class="highlight-item">
-                            <div class="highlight-title">Gen AI</div>
-                            <div class="highlight-label">AI-Powered Development</div>
+                            <div class="highlight-title">Automation</div>
+                            <div class="highlight-label">Expert Level</div>
                         </div>
                     </div>
                 </div>
@@ -702,14 +893,48 @@
         </div>
     </section>
 
-    <!-- Education Section -->
+    <!-- Certifications Section -->
+    <section class="certifications">
+        <div class="certifications-container">
+            <h2 class="section-title">Licenses & Certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-name">Use APIs to Work with Cloud Storage Skill Badge</div>
+                    <div class="cert-issuer">Google</div>
+                    <div class="cert-date">Issued Dec 2024</div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-name">Microsoft Certified: Azure Fundamentals</div>
+                    <div class="cert-issuer">Microsoft</div>
+                    <div class="cert-date">Issued Nov 2022</div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-name">Associate Cloud Engineer</div>
+                    <div class="cert-issuer">Google Cloud</div>
+                    <div class="cert-date">Issued Nov 2022 </div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-name">Professional Cloud Architect</div>
+                    <div class="cert-issuer">Google Cloud</div>
+                    <div class="cert-date">Issued Mar 2023</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
     <section class="education">
         <div class="education-container">
             <h2 class="section-title">Education</h2>
             <div class="education-item">
-                <h3>Master of Technology (M.Tech) / Bachelor of Engineering (B.Tech)</h3>
-                <p class="education-field">Computer Science & Engineering</p>
-                <p class="education-details">Indian Institute / University - India</p>
+                <h3>Master of Technology (M.Tech)</h3>
+                <p class="education-field">Software Systems</p>
+                <p class="education-details">BITS Pilani, Pilani Campus - India</p>
+            </div>
+            <div class="education-item">
+                <h3>Bachelor of Science (BS)</h3>
+                <p class="education-field">Information Technology</p>
+                <p class="education-details">Patliputra University - Aug 2018 to Dec 2021 | Grade: A+</p>
             </div>
             <div class="education-item">
                 <h3>Professional Development</h3>
@@ -782,6 +1007,15 @@
                 </ul>
             </div>
             <div class="skill-card">
+                <h3>Agentic AI & Languages</h3>
+                <ul>
+                    <li>Python with Agentic AI</li>
+                    <li>Java with AI Frameworks</li>
+                    <li>C# / .NET with AI Integration</li>
+                    <li>Multi-Language Agentic Systems</li>
+                </ul>
+            </div>
+            <div class="skill-card">
                 <h3>Data & Monitoring</h3>
                 <ul>
                     <li>SQL Server</li>
@@ -813,6 +1047,45 @@
             <div class="stat-item">
                 <div class="stat-number">Expert</div>
                 <div class="stat-label">DevOps & Cloud Architect</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enterprise Experience Section -->
+    <section class="enterprise">
+        <div class="enterprise-container">
+            <h2 class="section-title">Enterprise Experience</h2>
+            <div class="enterprise-content">
+                <div class="enterprise-card">
+                    <div class="enterprise-icon">🏢</div>
+                    <h3>Large-Scale Application Management</h3>
+                    <p>Expertise in managing and deploying enterprise-grade applications serving thousands of concurrent users across multiple regions and cloud environments.</p>
+                </div>
+                <div class="enterprise-card">
+                    <div class="enterprise-icon">🔄</div>
+                    <h3>Multi-Environment Orchestration</h3>
+                    <p>Proficient in managing production, staging, and development environments with automated deployment pipelines, infrastructure scaling, and disaster recovery protocols.</p>
+                </div>
+                <div class="enterprise-card">
+                    <div class="enterprise-icon">🛡️</div>
+                    <h3>Security & Compliance</h3>
+                    <p>Implemented security best practices, Azure SSO integration, access control mechanisms, and compliance frameworks for enterprise applications.</p>
+                </div>
+                <div class="enterprise-card">
+                    <div class="enterprise-icon">📊</div>
+                    <h3>Monitoring & Observability</h3>
+                    <p>Deployed comprehensive monitoring solutions including Splunk, Prometheus, and Alert Manager for real-time visibility into application health and performance metrics.</p>
+                </div>
+                <div class="enterprise-card">
+                    <div class="enterprise-icon">🚀</div>
+                    <h3>CI/CD Pipeline Excellence</h3>
+                    <p>Designed and implemented automated CI/CD pipelines using Jenkins, Azure DevOps, and GitHub Actions enabling rapid, reliable deployments with zero-downtime strategies.</p>
+                </div>
+                <div class="enterprise-card">
+                    <div class="enterprise-icon">👥</div>
+                    <h3>Team Leadership & Mentoring</h3>
+                    <p>Experience in managing and leading technical teams, mentoring junior developers, and driving organizational DevOps transformation initiatives.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -887,6 +1160,53 @@
                         <a href="https://github.com/alokraja075/90DaysOfDevOps" class="project-link" target="_blank">View Project →</a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Open Source Contributions Section -->
+    <section class="opensource" id="opensource">
+        <div class="opensource-container">
+            <h2 class="section-title">Open Source Contributions</h2>
+            <div class="opensource-content">
+                <div class="contrib-stats">
+                    <div class="contrib-stat">
+                        <div class="stat-icon">📁</div>
+                        <div class="stat-value">37</div>
+                        <div class="stat-text">Public Repositories</div>
+                    </div>
+                    <div class="contrib-stat">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-value">500+</div>
+                        <div class="stat-text">Commits & Contributions</div>
+                    </div>
+                    <div class="contrib-stat">
+                        <div class="stat-icon">🔧</div>
+                        <div class="stat-value">Multi-Stack</div>
+                        <div class="stat-text">Languages & Frameworks</div>
+                    </div>
+                    <div class="contrib-stat">
+                        <div class="stat-icon">🚀</div>
+                        <div class="stat-value">Active</div>
+                        <div class="stat-text">Continuous Development</div>
+                    </div>
+                </div>
+                <div class="contrib-description">
+                    <h3>Contributions Overview</h3>
+                    <p>I actively contribute to open-source projects and maintain a diverse portfolio of repositories spanning across DevOps, Cloud Infrastructure, CI/CD, and full-stack development. My contributions focus on:</p>
+                    <ul class="contrib-list">
+                        <li><strong>Infrastructure as Code:</strong> Terraform modules, Ansible playbooks, and cloud infrastructure templates</li>
+                        <li><strong>DevOps Tooling:</strong> CI/CD pipeline templates, automation scripts, and deployment solutions</li>
+                        <li><strong>Cloud Solutions:</strong> AWS, Azure, and GCP infrastructure examples and best practices</li>
+                        <li><strong>Application Development:</strong> Full-stack applications demonstrating cloud-native architecture patterns</li>
+                        <li><strong>Learning Resources:</strong> Documentation, tutorials, and guides for DevOps and cloud technologies</li>
+                        <li><strong>Integration Projects:</strong> Real-world examples of Kubernetes, Docker, and container orchestration</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="github-link-box">
+                <p>Explore all my projects on GitHub</p>
+                <a href="https://github.com/alokraja075?tab=repositories" class="btn btn-primary" target="_blank">View All Repositories</a>
             </div>
         </div>
     </section>
