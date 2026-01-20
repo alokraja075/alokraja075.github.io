@@ -1,165 +1,691 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Alok Raja | DevOps Engineer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alok Raja - DevOps | Cloud | IaC | Monitoring</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
-      line-height: 1.6;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    a { color: #38bdf8; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+        }
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 20px;
-    }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    h1, h2, h3, h4 {
-      color: #f8fafc;
-      margin-bottom: 10px;
-    }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
 
-    h1 { font-size: 2.8rem; }
-    h2 { font-size: 2rem; margin-top: 40px; }
-    h3 { font-size: 1.3rem; font-weight: 500; color: #94a3b8; }
-    h4 { font-weight: 400; color: #cbd5f5; }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
 
-    .center { text-align: center; }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
 
-    ul {
-      margin-top: 10px;
-      padding-left: 20px;
-    }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
 
-    .stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin: 15px 0 30px;
-    }
+        /* Hero Section */
+        .hero {
+            padding-top: 100px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
+            position: relative;
+            overflow: hidden;
+        }
 
-    .stack img {
-      width: 45px;
-      height: 45px;
-      background: #020617;
-      padding: 6px;
-      border-radius: 8px;
-    }
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            animation: float 6s ease-in-out infinite;
+        }
 
-    .connect {
-      margin-top: 30px;
-    }
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+            bottom: -150px;
+            left: -150px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
 
-    .badge {
-      margin: 0 8px;
-    }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
 
-    footer {
-      margin-top: 60px;
-      padding: 20px;
-      text-align: center;
-      color: #64748b;
-      font-size: 0.9rem;
-    }
-  </style>
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--success) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--success) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 2rem;
+            border-radius: 1rem;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .skill-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            padding: 0.5rem 0;
+            color: var(--text-muted);
+        }
+
+        .skill-card li::before {
+            content: '✓ ';
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 5rem 2rem;
+            background: rgba(30, 41, 59, 0.3);
+        }
+
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+            padding: 2rem;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-light);
+        }
+
+        .project-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-language {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--accent-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 0.25rem;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--accent-light);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 1rem;
+            transition: all 0.3s;
+        }
+
+        .stat-item:hover {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: rgba(30, 41, 59, 0.3);
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.8);
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content {
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .skill-card, .project-card, .stat-item {
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+
+        .skill-card:nth-child(1) { animation-delay: 0.1s; }
+        .skill-card:nth-child(2) { animation-delay: 0.2s; }
+        .skill-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+    </style>
 </head>
-
 <body>
-  <div class="container">
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">AR</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="center">
-      <h1>Hi 👋, I'm Alok Raja</h1>
-      <h3>DevOps Engineer | Cloud Engineer | Open Source Enthusiast</h3>
-      <h4>Building scalable, automated, and secure cloud-native systems 🚀</h4>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Alok Raja</h1>
+            <p class="subtitle">DevOps | Cloud | IaC | Monitoring</p>
+            <p>Passionate about automating workflows, managing infrastructure, and improving developer productivity. Based in Pune.</p>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">37 Public Repositories | 5 Followers | 1 Following</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/alokraja075" class="btn btn-primary" target="_blank">View GitHub Profile</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
 
-    <h2>🚀 About Me</h2>
-    <ul>
-      <li>🌱 Passionate about <strong>DevOps, Cloud Infrastructure, Automation, and Security</strong></li>
-      <li>🔄 Strong advocate of <strong>CI/CD, GitOps, and Infrastructure as Code</strong></li>
-      <li>☁️ Hands-on experience with <strong>AWS, Kubernetes, Terraform, and Containers</strong></li>
-      <li>👯 Looking to collaborate on <strong>DevOps, Cloud, Kubernetes & Open Source projects</strong></li>
-      <li>💬 Ask me about <strong>CI/CD Pipelines, Cloud Architecture, Docker & Kubernetes</strong></li>
-      <li>⚡ Fun fact: <em>If it can be automated, it should be automated 😄</em></li>
-    </ul>
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <h2 class="section-title">Core Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>DevOps & Infrastructure</h3>
+                <ul>
+                    <li>Terraform (HCL)</li>
+                    <li>AWS (EC2, ALB, VPC, S3)</li>
+                    <li>Ansible Automation</li>
+                    <li>Infrastructure as Code</li>
+                    <li>Multi-environment deployments</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Cloud Platforms</h3>
+                <ul>
+                    <li>AWS</li>
+                    <li>Microsoft Azure</li>
+                    <li>Google Cloud Platform</li>
+                    <li>Azure DevOps</li>
+                    <li>Bicep Templates</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Containerization & Orchestration</h3>
+                <ul>
+                    <li>Docker</li>
+                    <li>Kubernetes (EKS)</li>
+                    <li>GitOps & ArgoCD</li>
+                    <li>Container Registry</li>
+                    <li>Multi-stage Builds</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>CI/CD & Automation</h3>
+                <ul>
+                    <li>GitHub Actions</li>
+                    <li>Jenkins</li>
+                    <li>GitLab CI</li>
+                    <li>Pipeline Automation</li>
+                    <li>Workflow Orchestration</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Development Languages</h3>
+                <ul>
+                    <li>Python</li>
+                    <li>Java</li>
+                    <li>C# / .NET Core</li>
+                    <li>TypeScript</li>
+                    <li>JavaScript</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Data & Monitoring</h3>
+                <ul>
+                    <li>SQL Server</li>
+                    <li>Monitoring Solutions</li>
+                    <li>SSIS Integration</li>
+                    <li>Testing & QA</li>
+                    <li>Chaos Engineering</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-    <h2>🛠️ Tech Stack & Tools</h2>
+    <!-- Stats Section -->
+    <section class="stats">
+        <h2 class="section-title">By The Numbers</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">37</div>
+                <div class="stat-label">Public Repositories</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Followers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Following</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+        </div>
+    </section>
 
-    <h3>☁️ Cloud Platforms</h3>
-    <div class="stack">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"/>
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg"/>
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/googlecloud/googlecloud-original.svg"/>
-    </div>
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="projects-container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Terraform Pro</h3>
+                        <p class="project-description">Infrastructure-as-code examples and reusable modules for AWS, covering EC2, autoscaling, ALB, VPC, and S3.</p>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-language">HCL</span>
+                        <a href="https://github.com/alokraja075/Terraform-Pro" class="project-link" target="_blank">View Project →</a>
+                    </div>
+                </div>
 
-    <h3>📦 Containers & Orchestration</h3>
-    <div class="stack">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg"/>
-      <img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg"/>
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/helm/helm-original.svg"/>
-    </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Terraform Ansible Multi-Env</h3>
+                        <p class="project-description">Production-ready IaC solution for deploying and managing EC2 instances across multiple environments using Terraform and Ansible.</p>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-language">HCL</span>
+                        <a href="https://github.com/alokraja075/terraform-ansible-multi-env" class="project-link" target="_blank">View Project →</a>
+                    </div>
+                </div>
 
-    <h3>🔄 CI/CD & GitOps</h3>
-    <div class="stack">
-      <img src="https://www.vectorlogo.zone/logos/jenkins/jenkins-icon.svg"/>
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/argocd/argocd-original.svg"/>
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg"/>
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/gitlab/gitlab-original.svg"/>
-    </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">ToDoList MVC .NET</h3>
+                        <p class="project-description">Simple and efficient CRUD To-Do List app built with C# .NET Core MVC, containerized with Docker, deployed on AWS EKS.</p>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-language">C#</span>
+                        <a href="https://github.com/alokraja075/alokraja075-ToDoList-MVC-.NET" class="project-link" target="_blank">View Project →</a>
+                    </div>
+                </div>
 
-    <h3>🏗️ Infrastructure as Code</h3>
-    <div class="stack">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-original.svg"/>
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/ansible/ansible-original.svg"/>
-    </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Retail Store Sample App</h3>
+                        <p class="project-description">Multi-tier Retail Store Application demonstrating Kubernetes production deployment with EKS, Terraform, and GitOps with ArgoCD.</p>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-language">Java</span>
+                        <a href="https://github.com/alokraja075/retail-store-sample-app" class="project-link" target="_blank">View Project →</a>
+                    </div>
+                </div>
 
-    <h3>📊 Monitoring & Observability</h3>
-    <div class="stack">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/prometheus/prometheus-original.svg"/>
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/grafana/grafana-original.svg"/>
-      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/datadog.svg"/>
-    </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Smart Budget Trip Planner</h3>
+                        <p class="project-description">Intelligent trip planning application with budget optimization features.</p>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-language">TypeScript</span>
+                        <a href="https://github.com/alokraja075/Smart-Budget-Trip-Planner" class="project-link" target="_blank">View Project →</a>
+                    </div>
+                </div>
 
-    <h3>💻 Programming & Scripting</h3>
-    <div class="stack">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"/>
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original.svg"/>
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg"/>
-    </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">90 Days of DevOps</h3>
+                        <p class="project-description">90-day DevOps challenge to strengthen skills in Docker, Kubernetes, Terraform, Ansible, Jenkins and Azure DevOps.</p>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-language">Python</span>
+                        <a href="https://github.com/alokraja075/90DaysOfDevOps" class="project-link" target="_blank">View Project →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <h3>🗄️ Databases</h3>
-    <div class="stack">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/oracle/oracle-original.svg"/>
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/microsoftsqlserver/microsoftsqlserver-original.svg"/>
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg"/>
-    </div>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Let's Connect</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">Interested in DevOps, Cloud, or Infrastructure projects? Let's talk!</p>
+            <div class="contact-links">
+                <a href="https://github.com/alokraja075" class="contact-link" target="_blank">
+                    GitHub
+                </a>
+                <a href="mailto:alokraja075@gmail.com" class="contact-link">
+                    Email
+                </a>
+                <a href="https://www.linkedin.com/in/alokraja01/" class="contact-link" target="_blank">
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
 
-    <h2 class="center">🌐 Connect With Me</h2>
-    <div class="center connect">
-      <a class="badge" href="https://www.linkedin.com/in/alokraja01/" target="_blank">
-        <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin&logoColor=white"/>
-      </a>
-      <a class="badge" href="mailto:alokraja075@gmail.com">
-        <img src="https://img.shields.io/badge/Email-alokraja075@gmail.com-red?style=for-the-badge&logo=gmail&logoColor=white"/>
-      </a>
-    </div>
-
+    <!-- Footer -->
     <footer>
-      © 2025 Alok Raja • Built with GitHub Pages
+        <p>&copy; 2025 Alok Raja. All rights reserved. Crafted with passion for DevOps & Cloud.</p>
     </footer>
-
-  </div>
 </body>
 </html>
