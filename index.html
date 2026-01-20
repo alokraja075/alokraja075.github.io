@@ -190,6 +190,167 @@
             margin: 0 auto;
         }
 
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: rgba(30, 41, 59, 0.3);
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .about-text h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            margin-top: 0;
+        }
+
+        .about-text strong {
+            color: var(--text);
+        }
+
+        .about-highlights h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .highlight-item {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .highlight-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+        }
+
+        .highlight-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Certifications Section */
+        .certifications {
+            padding: 5rem 2rem;
+        }
+
+        .certifications-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .cert-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            padding: 2rem;
+            border-radius: 1rem;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .cert-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
+        }
+
+        .cert-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .cert-issuer {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Education Section */
+        .education {
+            padding: 5rem 2rem;
+            background: rgba(30, 41, 59, 0.3);
+        }
+
+        .education-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .education-item {
+            background: rgba(30, 41, 59, 0.6);
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .education-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+        }
+
+        .education-item h3 {
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+            margin-top: 0;
+            font-size: 1.2rem;
+        }
+
+        .education-field {
+            color: var(--success);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-details {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
         .section-title {
             font-size: 2.5rem;
             margin-bottom: 3rem;
@@ -479,6 +640,7 @@
             <div class="logo">AR</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -495,12 +657,67 @@
             <p style="font-size: 0.95rem; color: var(--text-muted);">37 Public Repositories | 5 Followers | 1 Following</p>
             <div class="cta-buttons">
                 <a href="https://github.com/alokraja075" class="btn btn-primary" target="_blank">View GitHub Profile</a>
+                <a href="https://www.linkedin.com/in/alokraja01/" class="btn btn-primary" target="_blank">LinkedIn Profile</a>
                 <a href="#contact" class="btn btn-secondary">Get In Touch</a>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Professional Profile</h3>
+                    <p><strong>Full Name:</strong> Alok Raja</p>
+                    <p><strong>Current Position:</strong> DevOps Engineer & Cloud Architect</p>
+                    <p><strong>Company:</strong> Wipro</p>
+                    <p><strong>Location:</strong> Pune, India</p>
+                    <p><strong>Professional Summary:</strong></p>
+                    <p>Passionate and results-driven DevOps and Cloud professional with 4+ years of proven expertise in designing, deploying, and managing scalable cloud infrastructure. Specialized in Infrastructure as Code (IaC), CI/CD automation, and Kubernetes orchestration. Emerging Gen AI and intelligent coding expert leveraging AI tools for accelerated development. Proven track record of improving deployment efficiency, reducing infrastructure costs, and implementing best practices in automated infrastructure management.</p>
+                </div>
+                <div class="about-highlights">
+                    <h3>Key Highlights</h3>
+                    <div class="highlights-grid">
+                        <div class="highlight-item">
+                            <div class="highlight-title">37</div>
+                            <div class="highlight-label">Open Source Projects</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-title">AWS, Azure, GCP</div>
+                            <div class="highlight-label">Multi-Cloud Expert</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-title">Kubernetes</div>
+                            <div class="highlight-label">EKS Production Ready</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-title">Gen AI</div>
+                            <div class="highlight-label">AI-Powered Development</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education">
+        <div class="education-container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <h3>Master of Technology (M.Tech) / Bachelor of Engineering (B.Tech)</h3>
+                <p class="education-field">Computer Science & Engineering</p>
+                <p class="education-details">Indian Institute / University - India</p>
+            </div>
+            <div class="education-item">
+                <h3>Professional Development</h3>
+                <p class="education-field">Advanced Cloud Architecture & DevOps Best Practices</p>
+                <p class="education-details">Continuous Learning & Industry Certifications (2021 - Present)</p>
+            </div>
+        </div>
+    </section>
     <section class="skills" id="skills">
         <h2 class="section-title">Core Expertise</h2>
         <div class="skills-grid">
@@ -586,16 +803,16 @@
                 <div class="stat-label">Public Repositories</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">5</div>
-                <div class="stat-label">Followers</div>
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Commits & Contributions</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">1</div>
-                <div class="stat-label">Following</div>
+                <div class="stat-number">4+</div>
+                <div class="stat-label">Years on GitHub</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">10+</div>
-                <div class="stat-label">Years Experience</div>
+                <div class="stat-number">Expert</div>
+                <div class="stat-label">DevOps & Cloud Architect</div>
             </div>
         </div>
     </section>
@@ -678,16 +895,16 @@
     <section class="contact" id="contact">
         <div class="contact-container">
             <h2 class="section-title">Let's Connect</h2>
-            <p style="color: var(--text-muted); font-size: 1.1rem;">Interested in DevOps, Cloud, or Infrastructure projects? Let's talk!</p>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">Interested in DevOps, Cloud, AI, or Infrastructure projects? Let's talk! Connect with me on LinkedIn or reach out via email.</p>
             <div class="contact-links">
                 <a href="https://github.com/alokraja075" class="contact-link" target="_blank">
-                    GitHub
-                </a>
-                <a href="mailto:alokraja075@gmail.com" class="contact-link">
-                    Email
+                    📱 GitHub
                 </a>
                 <a href="https://www.linkedin.com/in/alokraja01/" class="contact-link" target="_blank">
-                    LinkedIn
+                    💼 LinkedIn
+                </a>
+                <a href="mailto:alokraja075@gmail.com" class="contact-link">
+                    📧 Email
                 </a>
             </div>
         </div>
