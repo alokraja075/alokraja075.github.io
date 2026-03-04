@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Installation Guide</title>
+  <style>
+    body{margin:0;font-family:Segoe UI,Tahoma,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.6}
+    .wrap{max-width:1000px;margin:auto;padding:1.25rem}
+    a{color:#60a5fa;text-decoration:none}
+    .os{background:#1e293b;border:1px solid rgba(59,130,246,.25);padding:1rem;border-radius:.7rem;margin:.8rem 0}
+    h2{color:#93c5fd;margin:.2rem 0 .6rem}
+    pre{background:#020617;border:1px solid rgba(59,130,246,.25);padding:.8rem;border-radius:.5rem;overflow:auto}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a href="../index.html">← All Guides</a>
+    <h1>Python Installation Guide</h1>
+
+    <div class="os">
+      <h2>Ubuntu / Debian</h2>
+      <pre>sudo apt update
+sudo apt install -y python3 python3-pip python3-venv
+python3 --version
+pip3 --version</pre>
+    </div>
+
+    <div class="os">
+      <h2>RHEL / CentOS / Fedora</h2>
+      <pre># Fedora / RHEL 8+
+sudo dnf install -y python3 python3-pip
+
+# Older CentOS
+sudo yum install -y python3 python3-pip
+
+python3 --version
+pip3 --version</pre>
+    </div>
+
+    <div class="os">
+      <h2>Arch Linux</h2>
+      <pre>sudo pacman -Syu --noconfirm python python-pip
+python --version
+pip --version</pre>
+    </div>
+
+    <div class="os">
+      <h2>openSUSE</h2>
+      <pre>sudo zypper refresh
+sudo zypper install -y python311 python311-pip
+python3 --version
+pip3 --version</pre>
+    </div>
+
+    <div class="os">
+      <h2>macOS</h2>
+      <pre>brew install python
+python3 --version
+pip3 --version</pre>
+    </div>
+
+    <div class="os">
+      <h2>Windows</h2>
+      <pre># winget
+winget install --id Python.Python.3.12 -e
+
+# Chocolatey
+choco install python -y
+
+python --version
+pip --version</pre>
+    </div>
+
+    <div class="os">
+      <h2>Recommended Virtual Environment Setup</h2>
+      <pre>python3 -m venv .venv
+source .venv/bin/activate   # Linux/macOS
+# .venv\Scripts\activate    # Windows PowerShell
+python -m pip install --upgrade pip</pre>
+    </div>
+  </div>
+</body>
+</html>
