@@ -49,6 +49,28 @@
       border-radius: 0.6rem;
       margin-bottom: 1.5rem;
     }
+    .search-wrap {
+      margin-bottom: 1.2rem;
+    }
+    .search-input {
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      border-radius: 0.6rem;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text);
+      font-size: 0.98rem;
+      outline: none;
+    }
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+    .search-hint {
+      margin-top: 0.45rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
     .grid {
       display: grid;
       gap: 1rem;
@@ -83,6 +105,12 @@
       padding: .1rem .35rem;
       color: #bfdbfe;
     }
+    .no-results {
+      display: none;
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 <body>
@@ -98,7 +126,12 @@
       Supported OS groups in every guide: <strong>Ubuntu/Debian</strong>, <strong>RHEL/CentOS/Fedora</strong>, <strong>Arch Linux</strong>, <strong>openSUSE</strong>, <strong>macOS</strong>, and <strong>Windows</strong>.
     </div>
 
-    <div class="grid">
+    <div class="search-wrap">
+      <input id="guideSearch" class="search-input" type="text" placeholder="Search tool guides (e.g., kubernetes, terraform, python)" aria-label="Search tool guides" />
+      <div class="search-hint">Type to filter by tool name or description.</div>
+    </div>
+
+    <div class="grid" id="guideGrid">
       <div class="card"><h3>Git</h3><p>Version control setup and verification.</p><a href="git/index.html">Open guide →</a></div>
       <div class="card"><h3>Docker Engine</h3><p>Container runtime installation by OS family.</p><a href="docker/index.html">Open guide →</a></div>
       <div class="card"><h3>Kubernetes CLI (kubectl)</h3><p>Install and validate client tooling.</p><a href="kubernetes/index.html">Open guide →</a></div>
@@ -151,10 +184,32 @@
       <div class="card"><h3>Snyk CLI</h3><p>Dependency and container vulnerability scanner.</p><a href="snyk-cli/index.html">Open guide →</a></div>
       <div class="card"><h3>Checkov</h3><p>IaC security scanning for Terraform/Kubernetes files.</p><a href="checkov/index.html">Open guide →</a></div>
     </div>
+    <div class="no-results" id="noResults">No matching guides found. Try a different keyword.</div>
 
     <div class="support">
       <strong>Tip:</strong> For Linux, run package commands with <code>sudo</code>. For Windows, use an elevated PowerShell when required.
     </div>
   </div>
+  <script>
+    const searchInput = document.getElementById('guideSearch');
+    const guideGrid = document.getElementById('guideGrid');
+    const cards = Array.from(guideGrid.querySelectorAll('.card'));
+    const noResults = document.getElementById('noResults');
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+        const description = card.querySelector('p')?.textContent.toLowerCase() || '';
+        const isMatch = title.includes(query) || description.includes(query);
+        card.style.display = isMatch ? '' : 'none';
+        if (isMatch) visibleCount += 1;
+      });
+
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    });
+  </script>
 </body>
 </html>
