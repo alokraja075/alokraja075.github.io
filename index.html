@@ -907,7 +907,7 @@
                     <p><strong>Current Position:</strong> DevOps Engineer</p>
                     <p><strong>Company:</strong> Wipro</p>
                     <p><strong>Education:</strong> Patliputra University</p>
-                    <p><strong>Experience:</strong> Jul 2022 - Present (3+ years)</p>
+                    <p><strong>Experience:</strong> Jul 2022 - Present (<span id="experienceYears">3.0</span> years)</p>
                     <p><strong>Location:</strong> Gurugram, Haryana, India</p>
                     <p><strong>Professional Summary:</strong></p>
                     <p>I am a skilled DevOps engineer and developer with a passion for streamlining processes and optimizing workflows. I leverage my expertise to build efficient and scalable solutions. Dedicated to continuous improvement, I embrace cutting-edge technologies and collaborate seamlessly across teams to drive innovation in the ever-evolving tech landscape.</p>
@@ -1326,6 +1326,15 @@
             cursorGlow.style.opacity = '0';
             heroContent.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
         });
+
+        const experienceYearsElement = document.getElementById('experienceYears');
+        if (experienceYearsElement) {
+            const startDate = new Date(2022, 6, 1);
+            const now = new Date();
+            const millisecondsPerYear = 365.25 * 24 * 60 * 60 * 1000;
+            const years = (now - startDate) / millisecondsPerYear;
+            experienceYearsElement.textContent = years.toFixed(1);
+        }
     </script>
 </body>
 </html>
