@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Trivy Installation Guide</title>
+<style>body{margin:0;font-family:Segoe UI,Tahoma,sans-serif;background:#0f172a;color:#e2e8f0}.wrap{max-width:1000px;margin:auto;padding:1.25rem}a{color:#60a5fa;text-decoration:none}.os{background:#1e293b;border:1px solid rgba(59,130,246,.25);padding:1rem;border-radius:.7rem;margin:.8rem 0}h2{color:#93c5fd}pre{background:#020617;border:1px solid rgba(59,130,246,.25);padding:.8rem;border-radius:.5rem;overflow:auto}</style>
+</head><body><div class="wrap"><a href="../index.html">← All Guides</a><h1>Trivy Installation Guide</h1>
+<div class="os"><h2>Ubuntu / Debian</h2><pre>sudo apt-get install -y wget apt-transport-https gnupg lsb-release
+wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dearmor | sudo tee /usr/share/keyrings/trivy.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/trivy.list
+sudo apt-get update
+sudo apt-get install -y trivy
+trivy --version</pre></div>
+<div class="os"><h2>RHEL / CentOS / Fedora</h2><pre>cat <<EOF | sudo tee /etc/yum.repos.d/trivy.repo
+[trivy]
+name=Trivy repository
+baseurl=https://aquasecurity.github.io/trivy-repo/rpm/releases/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=https://aquasecurity.github.io/trivy-repo/rpm/public.key
+EOF
+sudo dnf -y install trivy || sudo yum -y install trivy
+trivy --version</pre></div>
+<div class="os"><h2>Arch Linux</h2><pre>sudo pacman -Syu --noconfirm trivy
+trivy --version</pre></div>
+<div class="os"><h2>openSUSE</h2><pre>sudo zypper addrepo https://aquasecurity.github.io/trivy-repo/rpm/releases/x86_64/ trivy
+sudo rpm --import https://aquasecurity.github.io/trivy-repo/rpm/public.key
+sudo zypper refresh
+sudo zypper install -y trivy
+trivy --version</pre></div>
+<div class="os"><h2>macOS</h2><pre>brew install trivy
+trivy --version</pre></div>
+<div class="os"><h2>Windows</h2><pre># winget
+winget install --id AquaSecurity.Trivy -e
+
+# choco
+choco install trivy -y
+
+trivy --version</pre></div>
+<div class="os"><h2>Validation</h2><pre>trivy image nginx:latest</pre></div>
+</div></body></html>
