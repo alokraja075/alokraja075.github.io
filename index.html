@@ -30,6 +30,19 @@
             overflow-x: hidden;
         }
 
+        .cursor-glow {
+            position: fixed;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.22) 0%, rgba(59, 130, 246, 0) 70%);
+            transition: opacity 0.25s ease;
+        }
+
         /* Navbar */
         nav {
             position: fixed;
@@ -76,13 +89,17 @@
 
         /* Hero Section */
         .hero {
+            --mouse-x: 50%;
+            --mouse-y: 50%;
             padding-top: 100px;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
+            background:
+                radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.16) 0%, rgba(59, 130, 246, 0) 42%),
+                linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -118,6 +135,8 @@
             position: relative;
             z-index: 1;
             max-width: 800px;
+            will-change: transform;
+            transition: transform 0.2s ease-out;
         }
 
         .hero h1 {
@@ -820,9 +839,17 @@
         .project-card:nth-child(1) { animation-delay: 0.1s; }
         .project-card:nth-child(2) { animation-delay: 0.2s; }
         .project-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .cursor-glow,
+            .hero-content {
+                transition: none;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="cursor-glow" id="cursorGlow"></div>
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
@@ -1238,5 +1265,54 @@
     <footer>
         <p>&copy; 2025 Alok Raja. All rights reserved. Crafted with passion for DevOps & Cloud.</p>
     </footer>
+
+    <script>
+        const heroSection = document.querySelector('.hero');
+        const heroContent = document.querySelector('.hero-content');
+        const cursorGlow = document.getElementById('cursorGlow');
+
+        let frameRequested = false;
+        let cursorX = window.innerWidth / 2;
+        let cursorY = window.innerHeight / 2;
+
+        const updateMotion = () => {
+            const rect = heroSection.getBoundingClientRect();
+            const xInHero = cursorX - rect.left;
+            const yInHero = cursorY - rect.top;
+
+            if (xInHero >= 0 && xInHero <= rect.width && yInHero >= 0 && yInHero <= rect.height) {
+                const xPercent = (xInHero / rect.width) * 100;
+                const yPercent = (yInHero / rect.height) * 100;
+
+                heroSection.style.setProperty('--mouse-x', `${xPercent}%`);
+                heroSection.style.setProperty('--mouse-y', `${yPercent}%`);
+
+                const tiltX = ((yPercent - 50) / 50) * -6;
+                const tiltY = ((xPercent - 50) / 50) * 6;
+                heroContent.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+            } else {
+                heroContent.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+            }
+
+            cursorGlow.style.left = `${cursorX}px`;
+            cursorGlow.style.top = `${cursorY}px`;
+            frameRequested = false;
+        };
+
+        document.addEventListener('mousemove', (event) => {
+            cursorX = event.clientX;
+            cursorY = event.clientY;
+            cursorGlow.style.opacity = '1';
+            if (!frameRequested) {
+                frameRequested = true;
+                requestAnimationFrame(updateMotion);
+            }
+        });
+
+        document.addEventListener('mouseleave', () => {
+            cursorGlow.style.opacity = '0';
+            heroContent.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+        });
+    </script>
 </body>
 </html>
