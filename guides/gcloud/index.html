@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Google Cloud CLI Installation Guide</title>
+<style>body{margin:0;font-family:Segoe UI,Tahoma,sans-serif;background:#0f172a;color:#e2e8f0}.wrap{max-width:1020px;margin:auto;padding:1.25rem}a{color:#60a5fa;text-decoration:none}.os{background:#1e293b;border:1px solid rgba(59,130,246,.25);padding:1rem;border-radius:.7rem;margin:.8rem 0}h2{color:#93c5fd}pre{background:#020617;border:1px solid rgba(59,130,246,.25);padding:.8rem;border-radius:.5rem;overflow:auto}</style>
+</head>
+<body><div class="wrap"><a href="../index.html">← All Guides</a><h1>Google Cloud CLI (gcloud) Installation Guide</h1>
+<div class="os"><h2>Ubuntu / Debian</h2><pre>sudo apt update && sudo apt install -y apt-transport-https ca-certificates gnupg curl
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
+sudo apt update && sudo apt install -y google-cloud-cli
+gcloud --version</pre></div>
+<div class="os"><h2>RHEL / CentOS / Fedora</h2><pre>sudo tee -a /etc/yum.repos.d/google-cloud-sdk.repo <<EOF
+[google-cloud-cli]
+name=Google Cloud CLI
+baseurl=https://packages.cloud.google.com/yum/repos/cloud-sdk-el9-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=0
+gpgkey=https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+EOF
+sudo dnf install -y google-cloud-cli || sudo yum install -y google-cloud-cli
+gcloud --version</pre></div>
+<div class="os"><h2>Arch Linux</h2><pre>sudo pacman -Syu --noconfirm google-cloud-cli
+gcloud --version</pre></div>
+<div class="os"><h2>openSUSE</h2><pre># Preferred: tarball install for latest
+curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-x86_64.tar.gz
+tar -xf google-cloud-cli-linux-x86_64.tar.gz
+./google-cloud-sdk/install.sh
+gcloud --version</pre></div>
+<div class="os"><h2>macOS</h2><pre>brew install --cask google-cloud-sdk
+gcloud --version</pre></div>
+<div class="os"><h2>Windows</h2><pre># winget
+winget install --id Google.CloudSDK -e
+
+# Or use official installer from cloud.google.com
+
+gcloud --version</pre></div>
+<div class="os"><h2>Initialize</h2><pre>gcloud init
+gcloud auth list</pre></div>
+</div></body></html>
