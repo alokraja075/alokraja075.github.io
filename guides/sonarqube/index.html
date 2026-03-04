@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SonarQube Server Installation Guide</title>
+  <style>
+    body{margin:0;font-family:Segoe UI,Tahoma,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.6}
+    .wrap{max-width:1050px;margin:auto;padding:1.25rem}
+    a{color:#60a5fa;text-decoration:none}
+    .os{background:#1e293b;border:1px solid rgba(59,130,246,.25);padding:1rem;border-radius:.7rem;margin:.8rem 0}
+    h2{color:#93c5fd;margin:.2rem 0 .6rem}
+    pre{background:#020617;border:1px solid rgba(59,130,246,.25);padding:.8rem;border-radius:.5rem;overflow:auto}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a href="../index.html">← All Guides</a>
+    <h1>SonarQube Server Installation Guide</h1>
+
+    <div class="os">
+      <h2>Prerequisites (All OS)</h2>
+      <pre># SonarQube Community Server requirements
+# - Java 17+
+# - 2 vCPU+ and 4 GB RAM minimum (8 GB recommended)
+# - PostgreSQL recommended for production (bundled DB only for evaluation)</pre>
+    </div>
+
+    <div class="os">
+      <h2>Ubuntu / Debian (zip + systemd)</h2>
+      <pre>sudo apt update
+sudo apt install -y unzip wget openjdk-17-jdk
+
+# Create user
+sudo useradd --system --create-home --shell /bin/bash sonarqube
+
+# Download and extract
+cd /opt
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.6.0.92116.zip
+sudo unzip sonarqube-10.6.0.92116.zip
+sudo mv sonarqube-10.6.0.92116 sonarqube
+sudo chown -R sonarqube:sonarqube /opt/sonarqube
+
+# Start manually (first run)
+sudo -u sonarqube /opt/sonarqube/bin/linux-x86-64/sonar.sh start
+
+# Access
+# http://localhost:9000 (default login: admin / admin)</pre>
+    </div>
+
+    <div class="os">
+      <h2>RHEL / CentOS / Fedora</h2>
+      <pre>sudo dnf install -y unzip wget java-17-openjdk || sudo yum install -y unzip wget java-17-openjdk
+sudo useradd --system --create-home --shell /bin/bash sonarqube
+
+cd /opt
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.6.0.92116.zip
+sudo unzip sonarqube-10.6.0.92116.zip
+sudo mv sonarqube-10.6.0.92116 sonarqube
+sudo chown -R sonarqube:sonarqube /opt/sonarqube
+
+sudo -u sonarqube /opt/sonarqube/bin/linux-x86-64/sonar.sh start
+# http://localhost:9000</pre>
+    </div>
+
+    <div class="os">
+      <h2>Arch Linux</h2>
+      <pre># AUR package path (helper required) OR manual zip method
+# Example with yay:
+yay -S sonarqube
+
+# Or use Linux zip steps from Ubuntu section.
+# Start service/binary based on package instructions.</pre>
+    </div>
+
+    <div class="os">
+      <h2>openSUSE</h2>
+      <pre>sudo zypper refresh
+sudo zypper install -y unzip wget java-17-openjdk
+
+sudo useradd --system --create-home --shell /bin/bash sonarqube
+cd /opt
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.6.0.92116.zip
+sudo unzip sonarqube-10.6.0.92116.zip
+sudo mv sonarqube-10.6.0.92116 sonarqube
+sudo chown -R sonarqube:sonarqube /opt/sonarqube
+
+sudo -u sonarqube /opt/sonarqube/bin/linux-x86-64/sonar.sh start</pre>
+    </div>
+
+    <div class="os">
+      <h2>macOS</h2>
+      <pre># Community Edition via Docker is the most stable option on macOS
+brew install --cask docker
+
+docker run -d --name sonarqube \
+  -p 9000:9000 \
+  sonarqube:lts-community
+
+# Access
+# http://localhost:9000</pre>
+    </div>
+
+    <div class="os">
+      <h2>Windows</h2>
+      <pre># Option 1: Docker Desktop (recommended)
+winget install --id Docker.DockerDesktop -e
+
+docker run -d --name sonarqube -p 9000:9000 sonarqube:lts-community
+
+# Option 2: Native zip setup
+# 1) Install Java 17+
+# 2) Download SonarQube zip from sonarsource.com
+# 3) Extract to C:\sonarqube
+# 4) Run: C:\sonarqube\bin\windows-x86-64\StartSonar.bat
+
+# Access
+# http://localhost:9000</pre>
+    </div>
+
+    <div class="os">
+      <h2>Post-Install Setup</h2>
+      <pre># 1) Change default admin password
+# 2) Create project + token
+# 3) Use SonarScanner guide for analysis runs
+# Scanner guide: ../sonarqube-scanner/index.html</pre>
+    </div>
+  </div>
+</body>
+</html>
