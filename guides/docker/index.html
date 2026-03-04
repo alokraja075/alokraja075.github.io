@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Docker Installation Guide</title>
+  <style>
+    body{margin:0;font-family:Segoe UI,Tahoma,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.6}
+    .wrap{max-width:1050px;margin:auto;padding:1.25rem} a{color:#60a5fa;text-decoration:none}
+    .os{background:#1e293b;border:1px solid rgba(59,130,246,.25);padding:1rem;border-radius:.7rem;margin-bottom:1rem}
+    h2{margin:.2rem 0 .6rem;color:#93c5fd} pre{background:#020617;border:1px solid rgba(59,130,246,.25);padding:.8rem;border-radius:.5rem;overflow:auto}
+  </style>
+</head>
+<body><div class="wrap">
+<a href="../index.html">← All Guides</a><h1>Docker Engine Installation Guide</h1>
+<div class="os"><h2>Ubuntu / Debian</h2><pre>sudo apt update
+sudo apt install -y ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo $VERSION_CODENAME) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo usermod -aG docker $USER
+docker --version</pre></div>
+<div class="os"><h2>RHEL / CentOS / Fedora</h2><pre># Fedora
+sudo dnf -y install dnf-plugins-core
+sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# CentOS/RHEL
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install -y docker-ce docker-ce-cli containerd.io
+
+sudo systemctl enable --now docker
+docker --version</pre></div>
+<div class="os"><h2>Arch Linux</h2><pre>sudo pacman -Syu --noconfirm docker docker-compose
+sudo systemctl enable --now docker
+sudo usermod -aG docker $USER
+docker --version</pre></div>
+<div class="os"><h2>openSUSE</h2><pre>sudo zypper refresh
+sudo zypper install -y docker docker-compose
+sudo systemctl enable --now docker
+sudo usermod -aG docker $USER
+docker --version</pre></div>
+<div class="os"><h2>macOS / Windows</h2><pre># Install Docker Desktop
+# macOS: brew install --cask docker
+# Windows: winget install --id Docker.DockerDesktop -e
+
+# Start Docker Desktop, then verify:
+docker --version
+docker compose version</pre></div>
+<div class="os"><h2>Validation</h2><pre>docker run hello-world</pre></div>
+</div></body></html>

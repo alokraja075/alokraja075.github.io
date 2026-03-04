@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Git Installation Guide</title>
+  <style>
+    body{margin:0;font-family:Segoe UI,Tahoma,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.6}
+    .wrap{max-width:1000px;margin:auto;padding:1.25rem}
+    a{color:#60a5fa;text-decoration:none}.back{display:inline-block;margin-bottom:1rem}
+    h1{margin:.2rem 0 1rem}.os{background:#1e293b;border:1px solid rgba(59,130,246,.25);padding:1rem;border-radius:.7rem;margin-bottom:1rem}
+    h2{margin:.2rem 0 .6rem;color:#93c5fd}pre{background:#020617;border:1px solid rgba(59,130,246,.25);padding:.8rem;border-radius:.5rem;overflow:auto}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../index.html">← All Guides</a>
+    <h1>Git Installation Guide</h1>
+
+    <div class="os"><h2>Ubuntu / Debian</h2><pre>sudo apt update
+sudo apt install -y git
+git --version</pre></div>
+    <div class="os"><h2>RHEL / CentOS / Fedora</h2><pre># Fedora
+sudo dnf install -y git
+
+# RHEL/CentOS (if dnf unavailable use yum)
+sudo yum install -y git
+
+git --version</pre></div>
+    <div class="os"><h2>Arch Linux</h2><pre>sudo pacman -Syu --noconfirm git
+git --version</pre></div>
+    <div class="os"><h2>openSUSE</h2><pre>sudo zypper refresh
+sudo zypper install -y git
+git --version</pre></div>
+    <div class="os"><h2>macOS</h2><pre># Option 1: Xcode CLI tools
+xcode-select --install
+
+# Option 2: Homebrew
+brew install git
+
+git --version</pre></div>
+    <div class="os"><h2>Windows</h2><pre># winget
+winget install --id Git.Git -e
+
+# Chocolatey
+choco install git -y
+
+# Scoop
+scoop install git
+
+git --version</pre></div>
+    <div class="os"><h2>Post Install</h2><pre>git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+git config --global init.defaultBranch main</pre></div>
+  </div>
+</body>
+</html>

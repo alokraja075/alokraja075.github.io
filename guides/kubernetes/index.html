@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>kubectl Installation Guide</title>
+<style>body{margin:0;font-family:Segoe UI,Tahoma,sans-serif;background:#0f172a;color:#e2e8f0}.wrap{max-width:1000px;margin:auto;padding:1.25rem}a{color:#60a5fa;text-decoration:none}.os{background:#1e293b;border:1px solid rgba(59,130,246,.25);padding:1rem;border-radius:.7rem;margin:.8rem 0}h2{color:#93c5fd}pre{background:#020617;border:1px solid rgba(59,130,246,.25);padding:.8rem;border-radius:.5rem;overflow:auto}</style>
+</head>
+<body><div class="wrap"><a href="../index.html">← All Guides</a><h1>Kubernetes CLI (kubectl) Installation Guide</h1>
+<div class="os"><h2>Ubuntu / Debian</h2><pre>sudo apt update
+sudo apt install -y apt-transport-https ca-certificates curl gpg
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo apt update
+sudo apt install -y kubectl
+kubectl version --client</pre></div>
+<div class="os"><h2>RHEL / CentOS / Fedora</h2><pre>cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.31/rpm/
+enabled=1
+gpgcheck=1
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.31/rpm/repodata/repomd.xml.key
+EOF
+
+sudo dnf install -y kubectl || sudo yum install -y kubectl
+kubectl version --client</pre></div>
+<div class="os"><h2>Arch Linux</h2><pre>sudo pacman -Syu --noconfirm kubectl
+kubectl version --client</pre></div>
+<div class="os"><h2>openSUSE</h2><pre>sudo zypper refresh
+sudo zypper install -y kubernetes-client
+kubectl version --client</pre></div>
+<div class="os"><h2>macOS</h2><pre>brew install kubectl
+kubectl version --client</pre></div>
+<div class="os"><h2>Windows</h2><pre># winget
+winget install --id Kubernetes.kubectl -e
+
+# choco
+choco install kubernetes-cli -y
+
+kubectl version --client</pre></div>
+</div></body></html>

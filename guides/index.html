@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevOps Installation Guides</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #3b82f6;
+      --ok: #10b981;
+      --warn: #f59e0b;
+      --border: rgba(59, 130, 246, 0.2);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--bg) 0%, var(--bg-soft) 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem 3rem; }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .home-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.8rem;
+      border-radius: 0.5rem;
+    }
+    h1 { margin: 0.3rem 0; font-size: 2rem; }
+    .lead { color: var(--muted); margin: 0.3rem 0 1.2rem; }
+    .note {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 0.9rem;
+      border-radius: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    }
+    .card {
+      background: rgba(30, 41, 59, 0.75);
+      border: 1px solid var(--border);
+      border-radius: 0.8rem;
+      padding: 1rem;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .card:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .card h3 { margin: 0 0 .4rem; color: #93c5fd; }
+    .card p { margin: 0 0 .8rem; color: var(--muted); font-size: .95rem; }
+    .card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .support {
+      margin-top: 2rem;
+      padding: 1rem;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 0.7rem;
+      background: rgba(245, 158, 11, 0.08);
+    }
+    code {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(59,130,246,.2);
+      border-radius: .4rem;
+      padding: .1rem .35rem;
+      color: #bfdbfe;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <a class="home-link" href="../index.html">← Back to Main Page</a>
+    </div>
+
+    <h1>DevOps Tool Installation Guides</h1>
+    <p class="lead">Detailed installation references for popular DevOps tools, organized folder-wise and covering major operating systems.</p>
+
+    <div class="note">
+      Supported OS groups in every guide: <strong>Ubuntu/Debian</strong>, <strong>RHEL/CentOS/Fedora</strong>, <strong>Arch Linux</strong>, <strong>openSUSE</strong>, <strong>macOS</strong>, and <strong>Windows</strong>.
+    </div>
+
+    <div class="grid">
+      <div class="card"><h3>Git</h3><p>Version control setup and verification.</p><a href="git/index.html">Open guide →</a></div>
+      <div class="card"><h3>Docker Engine</h3><p>Container runtime installation by OS family.</p><a href="docker/index.html">Open guide →</a></div>
+      <div class="card"><h3>Kubernetes CLI (kubectl)</h3><p>Install and validate client tooling.</p><a href="kubernetes/index.html">Open guide →</a></div>
+      <div class="card"><h3>Terraform</h3><p>IaC binary install and version pinning basics.</p><a href="terraform/index.html">Open guide →</a></div>
+      <div class="card"><h3>Ansible</h3><p>Automation package install + quick check.</p><a href="ansible/index.html">Open guide →</a></div>
+      <div class="card"><h3>Jenkins</h3><p>Controller install with Java prerequisites.</p><a href="jenkins/index.html">Open guide →</a></div>
+      <div class="card"><h3>Helm</h3><p>Kubernetes package manager installation.</p><a href="helm/index.html">Open guide →</a></div>
+      <div class="card"><h3>Prometheus</h3><p>Monitoring server setup for Linux/macOS/Windows.</p><a href="prometheus/index.html">Open guide →</a></div>
+      <div class="card"><h3>Grafana</h3><p>Visualization platform install instructions.</p><a href="grafana/index.html">Open guide →</a></div>
+      <div class="card"><h3>Argo CD CLI</h3><p>GitOps command-line installation options.</p><a href="argocd/index.html">Open guide →</a></div>
+    </div>
+
+    <div class="support">
+      <strong>Tip:</strong> For Linux, run package commands with <code>sudo</code>. For Windows, use an elevated PowerShell when required.
+    </div>
+  </div>
+</body>
+</html>
