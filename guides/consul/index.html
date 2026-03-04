@@ -1,0 +1,8 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>Consul Installation Guide</title><style>body{margin:0;font-family:Segoe UI,Tahoma,sans-serif;background:#0f172a;color:#e2e8f0}.wrap{max-width:980px;margin:auto;padding:1.25rem}.os{background:#1e293b;border:1px solid rgba(59,130,246,.25);padding:1rem;border-radius:.7rem;margin:.8rem 0}a{color:#60a5fa;text-decoration:none}h2{color:#93c5fd}pre{background:#020617;border:1px solid rgba(59,130,246,.25);padding:.8rem;border-radius:.5rem;overflow:auto}</style></head><body><div class="wrap"><a href="../index.html">← All Guides</a><h1>HashiCorp Consul Installation Guide</h1><div class="os"><h2>Ubuntu / Debian</h2><pre>sudo apt update && sudo apt install -y gpg software-properties-common curl
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install -y consul
+consul --version</pre></div><div class="os"><h2>RHEL/Fedora/openSUSE/macOS/Windows</h2><pre># Use HashiCorp repository or package manager
+# macOS: brew install hashicorp/tap/consul
+# Windows: winget install --id Hashicorp.Consul -e
+consul --version</pre></div></div></body></html>
