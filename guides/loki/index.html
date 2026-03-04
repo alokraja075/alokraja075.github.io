@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Loki Installation Guide</title><style>body{margin:0;font-family:Segoe UI,Tahoma,sans-serif;background:#0f172a;color:#e2e8f0}.wrap{max-width:1000px;margin:auto;padding:1.25rem}a{color:#60a5fa;text-decoration:none}.os{background:#1e293b;border:1px solid rgba(59,130,246,.25);padding:1rem;border-radius:.7rem;margin:.8rem 0}h2{color:#93c5fd}pre{background:#020617;border:1px solid rgba(59,130,246,.25);padding:.8rem;border-radius:.5rem;overflow:auto}</style></head>
+<body><div class="wrap"><a href="../index.html">← All Guides</a><h1>Grafana Loki Installation Guide</h1>
+<div class="os"><h2>Linux (all distros, binary method)</h2><pre>curl -LO https://github.com/grafana/loki/releases/latest/download/loki-linux-amd64.zip
+unzip loki-linux-amd64.zip
+chmod +x loki-linux-amd64
+sudo mv loki-linux-amd64 /usr/local/bin/loki
+loki --version</pre></div>
+<div class="os"><h2>macOS</h2><pre>brew install loki
+loki --version</pre></div>
+<div class="os"><h2>Windows</h2><pre># Download loki-windows-amd64.zip from releases page
+# Extract and run:
+loki-windows-amd64.exe --version</pre></div>
+<div class="os"><h2>Quick Start</h2><pre>loki -config.file=loki-local-config.yaml</pre></div>
+</div></body></html>
